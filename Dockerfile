@@ -3,7 +3,8 @@ RUN adduser -S goruntime
 WORKDIR /work
 COPY ./src /work/
 RUN chmod -R 777 /work
-USER goruntime 
+USER goruntime
+#ENTRYPOINT ["go", "run", "/work/cmd/web/*.go"]
 RUN cd cmd/web/ && CGO_ENABLED=0 go build -o /work/binary
 
 FROM scratch
